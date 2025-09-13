@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Los caminos por la Mancha: mapa (Villuga 1546 y Meneses 1575)</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/blog.css">
+</head>
+<body>
+    <a href="index.html" class="volver-btn-fijo">Volver al inicio</a>
+    <a href="sobre-autor.html" class="autor-btn">Sobre el Autor</a>
+    <header>
+        <h1>EL LUGAR DE LA MANCHA: MOTA DEL CUERVO</h1>
+    </header>
+
+    <main>
+        <article class="articulo-completo">
+            <div class="contenido-articulo">
+                <h2>Mapa de caminos que pasan por la Mancha</h2>
+                <!-- Imagen a la derecha con texto envolviendo (estilo Blog 1) -->
+                <figure class="fig-leyenda fig-derecha">
+                    <img src="imagenes/Blog 8 - Mapa de Caminos.PNG"
+                         alt="Mapa de caminos por la Mancha (pintados en verde)"
+                         class="blog-imagen-derecha"
+                         onclick="abrirImagen(this)">
+                    <figcaption class="fig-leyenda">
+                        Mapa de caminos
+                    </figcaption>
+                </figure>
+
+                <p>Estos son los caminos -pintados de verde- que pasan por la Mancha, documentados por Juan Villuga en el año 1546 y por Alonso Meneses en el año 1575.</p>
+
+                <p>El camino más importante, por donde vino Cervantes en el año 1569, es el de Toledo a Cartagena. Salía desde Toledo, Tembleque, Villacañas, el Toboso, Manjavacas, el Provencio, Murcia a Cartagena, por este camino venían todos los personajes, importantes para embarcar en Cartagena.</p>
+
+                <p>Cervantes llegó a la Venta con la ermita derribada, el encinar y el cruce de caminos de Manjavacas. Tuvo que pernoctar algunas noches en la venta ya que era la única que existía en el camino desde Toledo a Cartagena. Cervantes, conoció el complejo lagunar de Manjavacas, los paisajes, los caminos y lugares de los alrededores como el Toboso, los molinos de viento de Campo de Criptana, Puerto Lápice entre otros (todos estos lugares existen).</p>
+
+                <!-- Limpieza del flujo para que el botón no se meta debajo de la imagen -->
+                <div style="clear: both;"></div>
+            </div>
+
+        </article>
+
+        <div id="visor-imagen" class="visor-oculto" onclick="cerrarImagen()">
+            <span class="cerrar-visor" onclick="cerrarImagen(event)">←</span>
+            <img id="imagen-ampliada" src="" alt="Imagen ampliada">
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 El Lugar de la Mancha: Mota del Cuervo. Todos los derechos reservados.</p>
+    </footer>
+    <script src="js/visor-imagenes.js"></script>
+</body>
+</html>
