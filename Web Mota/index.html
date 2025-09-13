@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EL LUGAR DE LA MANCHA: MOTA DEL CUERVO</title>
+    <link rel="icon" href="imagenes/Icono.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <a href="sobre-autor.html" class="autor-btn">Sobre el Autor</a>
+    <header>
+        <h1>EL LUGAR DE LA MANCHA: MOTA DEL CUERVO</h1>
+    </header>
+
+    <main>
+        <div class="blog-grid">
+            <a href="blog1.html" class="blog-item">
+                <img src="imagenes/Blog 1 - Molino.jpg" alt="Blog 1" class="blog-image" onclick="abrirImagen(this); return false;">
+                <div class="blog-title">
+                    <h2>Manjavacas es la Venta. La Mota el lugar.</h2>
+                </div>
+            </a>
+
+
+            <a href="blog2.html" class="blog-item">
+                <img src="imagenes/Blog 2.jpg" alt="Blog 2" class="blog-image" onclick="abrirImagen(this); return false;">
+                <div class="blog-title">
+                    <h2>El complejo lagunar de Manjavacas.</h2>
+                </div>
+            </a>
+
+            <a href="blog3.html" class="blog-item">
+                <img src="imagenes/blog3.jpg" alt="Blog 3" class="blog-image" onclick="abrirImagen(this); return false;">
+                <div class="blog-title">
+                    <h2>Privilegio de repartición de términos.</h2>
+                </div>
+            </a>
+
+            <a href="blog4.html" class="blog-item">
+                <img src="imagenes/Blog 4.jpg" alt="Blog 4" class="blog-image" onclick="abrirImagen(this); return false;">
+                <div class="blog-title">
+                    <h2>El origen he historia del apellido Manjavacas</h2>
+                </div>
+            </a>
+
+            <a href="blog5.html" class="blog-item">
+                <img src="imagenes/Blog 5.jpg" alt="Blog 5" class="blog-image" onclick="abrirImagen(this); return false;">
+                <div class="blog-title">
+                    <h2>Romerías y fiestas en la Ermita de Manjavacas y en Mota del Cuervo</h2>
+                </div>
+            </a>
+
+            <a href="blog6.html" class="blog-item">
+                <img src="imagenes/Blog 6.jpg" alt="Blog 6" class="blog-image" onclick="abrirImagen(this); return false;">
+                <div class="blog-title">
+                    <h2>Cervantes y los cervantistas</h2>
+                </div>
+            </a>
+
+            <a href="blog7.html" class="blog-item">
+                <img src="imagenes/Blog 7.jpg" alt="Blog 7" class="blog-image" onclick="abrirImagen(this); return false;">
+                <div class="blog-title">
+                    <h2>Miguel de Cervantes Saavedra</h2>
+                </div>
+            </a>
+
+            <a href="blog8.html" class="blog-item">
+                <img src="imagenes/Blog 8.jpg" alt="Blog 8" class="blog-image" onclick="abrirImagen(this); return false;">
+                <div class="blog-title">
+                    <h2>Mapa de caminos que pasan por la Mancha</h2>
+                </div>
+            </a>
+
+            <a href="blog9.html" class="blog-item">
+                <img src="imagenes/Blog 9.jpg" alt="Blog 9" class="blog-image" onclick="abrirImagen(this); return false;">
+                <div class="blog-title">
+                    <h2>Primera salida</h2>
+                </div>
+            </a>
+
+            <a href="blog10.html" class="blog-item">
+                <img src="imagenes/Blog 10.jpg" alt="Blog 10" class="blog-image" onclick="abrirImagen(this); return false;">
+                <div class="blog-title">
+                    <h2>Segunda salida</h2>
+                </div>
+            </a>
+
+            <a href="blog11.html" class="blog-item">
+                <img src="imagenes/Blog 11.jpg" alt="Blog 11" class="blog-image" onclick="abrirImagen(this); return false;">
+                <div class="blog-title">
+                    <h2>Tercera Salida</h2>
+                </div>
+            </a>
+
+            <a href="blog12.html" class="blog-item">
+                <img src="imagenes/Blog 12.jpg" alt="Blog 12" class="blog-image" onclick="abrirImagen(this); return false;">
+                <div class="blog-title">
+                    <h2>En el principio de las tres salidas, Cervantes nos dejó todas las señales</h2>
+                </div>
+            </a>
+
+            <a href="blog13.html" class="blog-item">
+                <img src="imagenes/Blog 13.jpg" alt="Blog 13" class="blog-image" onclick="abrirImagen(this); return false;">
+                <div class="blog-title">
+                    <h2>Villanueva de los Infantes no es el "lugar de la Mancha"</h2>
+                </div>
+            </a>
+
+            <a href="blog14.html" class="blog-item">
+                <img src="imagenes/Blog 14.jpg" alt="Blog 14" class="blog-image" onclick="abrirImagen(this); return false;">
+                <div class="blog-title">
+                    <h2>Resumiendo</h2>
+                </div>
+            </a>
+
+            <a href="blog15.html" class="blog-item">
+                <img src="imagenes/Blog 15.jpg" alt="Blog 15" class="blog-image" onclick="abrirImagen(this); return false;">
+                <div class="blog-title">
+                    <h2>Don Quijote y Sancho Panza, van dejando a lo largo de sus aventuras puntos y señales, recordando
+                        el lugar de la Mancha que es su pueblo: Mota del Cuervo</h2>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 EL LUGAR DE LA MANCHA: MOTA DEL CUERVO. Todos los derechos reservados.</p>
+    </footer>
+    <!-- Al final del main, antes del cierre de </main> -->
+    <div id="visor-imagen" class="visor-oculto" onclick="cerrarImagen()">
+        <span class="cerrar-visor" onclick="cerrarImagen(event)">←</span>
+        <img id="imagen-ampliada" src="" alt="Imagen ampliada">
+    </div>
+    <script src="js/visor-imagenes.js"></script>
+</body>
+
+</html>

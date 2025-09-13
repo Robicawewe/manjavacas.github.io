@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manjavacas es la Venta. La Mota el lugar.</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/blog.css">
+</head>
+<body>
+    <a href="index.html" class="volver-btn-fijo">Volver al inicio</a>
+    <a href="sobre-autor.html" class="autor-btn">Sobre el Autor</a>
+    <header>
+        <h1>EL LUGAR DE LA MANCHA: MOTA DEL CUERVO</h1>
+    </header>
+
+    <main>
+        <article class="articulo-completo blog-contenedor-derecha">
+            <div class="contenido-articulo">
+                <h2>Manjavacas es la Venta. La Mota el lugar.</h2>
+                <p>El lugar está enmarcado en una geografía real, que Cervantes escogió, para hacer del lugar la patria chica de Don Quijote y Sancho Panza, Mota del Cuervo.</p>
+                <p>Parte de la documentación, ordenanzas y privilegios, son de los archivos, de libros de historia y del Registro de Mota del Cuervo, de las cartas de los visitadores de los caballeros de Santiago y de las visitas que hacían a los lugares conquistados, documentación obtenida a últimos del siglo XX y en la que me he basado para la realización de este blog</p>
+            </div>
+            <figure class="fig-leyenda">
+                <img src="imagenes/Blog 1 - Molino.jpg" alt="Imagen Blog 1" class="blog-imagen-derecha" onclick="abrirImagen(this)">
+                <figcaption class="img-leyenda">Molino de Viento de Mota del Cuervo</figcaption>
+            </figure>
+        </article>
+        
+        <!-- Visor de imagen -->
+        <div id="visor-imagen" class="visor-oculto" onclick="cerrarImagen()">
+            <span class="cerrar-visor" onclick="cerrarImagen(event)">←</span>
+            <img id="imagen-ampliada" src="" alt="Imagen ampliada">
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 El Lugar de la Mancha: Mota del Cuervo. Todos los derechos reservados.</p>
+    </footer>
+    <script src="js/visor-imagenes.js"></script>
+</body>
+</html>

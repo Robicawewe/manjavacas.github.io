@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segunda salida: itinerario y mapa</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/blog.css">
+</head>
+<body>
+    <a href="index.html" class="volver-btn-fijo">Volver al inicio</a>
+    <a href="sobre-autor.html" class="autor-btn">Sobre el Autor</a>
+    <header>
+        <h1>EL LUGAR DE LA MANCHA: MOTA DEL CUERVO</h1>
+    </header>
+
+    <main>
+        <article class="articulo-completo">
+            <div class="contenido-articulo">
+                <h2>Segunda salida</h2>
+
+                <!-- Imagen a la derecha con texto envolviendo -->
+                <figure class="fig-leyenda fig-derecha">
+                    <img src="imagenes/Blog 10 - Mapa Segunda Salida.PNG" alt="Mapa de la segunda salida (itinerario en azul)" class="blog-imagen-derecha" onclick="abrirImagen(this)">
+                    <figcaption class="fig-leyenda">
+                        Mapa de la segunda salida
+                    </figcaption>
+                </figure>
+
+                <p>DON QUIJOTE Y SANCHO PANZA, SALIERON DESDE EL LUGAR DE LA MANCHA.</p>
+
+                <p>El itinerario -pintado de azul-, es el que eligió don Quijote y Sancho Panza para la segunda salida. Salieron del lugar de la Mancha, por el mismo camino y derrota que él había tomado en su primera salida, (después seguían diferentes direcciones).</p>
+
+                <p>Don Quijote y Sancho Panza, una noche salieron del lugar de la Mancha, sin que persona los viese, Acertó don Quijote, a tomar el mismo camino y derrota que él había tomado en su primera aventura. Caminaron tanto, que al amanecer se tuvieron por seguro de que no los hallarían, aunque los buscasen, llegaron a un camino, (es el camino que viene del cruce de Manjavacas a Sevilla) que, por ser la hora de la mañana y "herirles a soslayo los rayos del sol", no les fatigaban. Don Quijote y Sancho Panza, siguieron el camino, en esto descubrieron treinta o cuarenta molinos de viento, de Campo de Criptana, donde don Quijote tuvo una gran batalla con los molinos.</p>
+
+                <p>Tiempo de tardanza desde el lugar de la Mancha a los molinos de viento, una jornada aproximadamente.</p>
+
+                <p>Don Quijote y Sancho Panza: "Y ablando" de la pasada aventura, de los molinos de viento, siguieron el camino de Puerto Lápice. Antes de llegar, se les hizo de noche y la pasaron en el camino, junto a unos árboles, entre Campo de Criptana y Puerto Lápice. A la mañana siguiente, a Sancho Panza lo despertó su amo, cuando los rayos del sol le daban en el rostro, tomaron el comenzado camino de Puerto Lápice y a eso de las tres del día lo divisaron: Tiempo de tardanza: desde el lugar de la Mancha, a divisar Puerto Lapice, menos de dos días.</p>
+
+                <p>Don Quijote y Sancho Panza, antes de llegar a Puerto Lápice, tuvieron una pelea con un vizcaíno, que acompañando a una señora que iba en un coche de caballos dirección Sevilla. Don Quijote, no quería dejar pasar el coche adelante, sino que decía que había de dar la vuelta hacia El Toboso. Después de la pelea con el vizcaíno, don Quijote, quedó mal herido y Sancho Panza le ayudó a subir sobre Rocinante y él subió sobre Rucio, sin despedirse de la señora del coche. Antes de llegar a Puerto Lápice, se adentraron por un bosque que allí junto estaba y antes de que anocheciera, llegaron a una choza de cabreros donde fueron recibidos de muy buena gana, y donde pasaron la noche. Al otro día, por la mañana los cabreros, despertaron a don Quijote, para si estaba dispuesto a ir al famoso entierro de Crisóstomo, don Quijote se levantó con mucha diligencia, se pusieron todos de camino. En esta segunda salida no llegaron a Puerto Lápice.</p>
+
+                <p>A partir de aquí, caminaban por Campo de Montiel, dirección Sierra Morena, donde les sucederían muchas y diversas aventuras.</p>
+
+                <p>El camino que viene desde Valencia, Manjavacas, Campo de Criptana, Puerto Lápice a Sevilla, es por dónde venían las dos mujeres mozas, que iban a Sevilla con unos arrieros y acertaron hacer jornada en la Venta de Manjavacas (Cap. II).</p>
+
+                <p>Es el mismo camino por donde venía la señora Vizcaína dirección Sevilla (Cap. VIII). Es el camino que viene desde el norte, pasa por Cuenca, Villaescusa de Aro, Monreal del Llano, La Mota, al cruce de Manjavacas, dirección Sevilla. Este camino está documentado, en el año 1546 por Juan Villuga.</p>
+
+                <!-- Limpiar el flujo para continuar a ancho completo -->
+                <div style="clear: both;"></div>
+            </div>
+        </article>
+
+        <!-- Visor para ampliar la imagen -->
+        <div id="visor-imagen" class="visor-oculto" onclick="cerrarImagen()">
+            <span class="cerrar-visor" onclick="cerrarImagen(event)">←</span>
+            <img id="imagen-ampliada" src="" alt="Imagen ampliada">
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 El Lugar de la Mancha: Mota del Cuervo. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="js/visor-imagenes.js"></script>
+</body>
+</html>
