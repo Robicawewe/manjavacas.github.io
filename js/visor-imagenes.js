@@ -100,4 +100,28 @@ function cerrarImagen(e) {
     }
     document.onmousemove = null;
     document.onmouseup = null;
+
+    
 }
+
+// Google Analytics 4 (gtag.js)
+(function () {
+    var GA_ID = 'G-XEWYSCEQ4N';
+
+    // Evitar cargar GA dos veces
+    if (window.gtag || document.querySelector('script[src*="googletagmanager.com/gtag/js"]')) return;
+
+    // Cargar script de GA asíncronamente
+    var gtagScript = document.createElement('script');
+    gtagScript.async = true;
+    gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(gtagScript);
+
+    // Inicializar dataLayer y gtag
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    window.gtag = gtag;
+
+    gtag('js', new Date());
+    gtag('config', GA_ID);
+})();
