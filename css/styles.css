@@ -10,149 +10,420 @@ html {
     scrollbar-gutter: stable;  /* Reserva su espacio en navegadores modernos */
 }
 
+/* ==== TEMA FORMAL Y ELEGANTE ==== */
+:root {
+    /* Paleta formal y sobria */
+    --primary-bg: #f6f3ee; /* Marfil suave */
+    --secondary-bg: #ffffff; /* Fondo tarjetas */
+    --text-color-dark: #2b2b2b; /* Carbón */
+    --text-color-light: #4a4a4a; /* Gris medio */
+    --accent-color: #6b2f2f; /* Burdeos */
+    --accent-color-light: #a76a6a; /* Burdeos claro */
+    --border-color: #e6dfd3; /* Borde cálido */
+    --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.06);
+    --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.12);
+    --border-radius-small: 6px;
+    --border-radius-medium: 10px;
+    /* Tipografías más formales */
+    --font-family-primary: 'Georgia', 'Times New Roman', serif;
+    --font-family-secondary: 'Garamond', 'Georgia', serif;
+    --heading-font-weight: 600;
+    --base-font-size: 16px;
+    --line-height-base: 1.7;
+    --spacing-unit: 1rem;
+}
+
+
+
+/* ==== MENÚ DESPLEGABLE ==== */
+.menu-container {
+    position: fixed;
+    top: 20px;
+    left: 40px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.menu-btn {
+    background-color: var(--secondary-bg);
+    padding: 10px 16px; /* igual que .btn */
+    border-radius: var(--border-radius-small); /* igual que .btn */
+    text-decoration: none;
+    color: var(--text-color-dark);
+    font-weight: var(--heading-font-weight);
+    box-shadow: var(--shadow-light);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.menu-btn:hover {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+    border-color: var(--accent-color); /* igual que .btn:hover */
+}
+
+/* Botón conmutador de tema */
+.theme-toggle {
+    background-color: var(--secondary-bg);
+    padding: 10px 16px; /* igual que .btn */
+    border-radius: var(--border-radius-small); /* igual que .btn */
+    color: var(--text-color-dark);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-light);
+    cursor: pointer;
+    transition: background-color .3s ease, color .3s ease, transform .2s ease, box-shadow .3s ease, border-color .3s ease;
+    line-height: 1;
+}
+.theme-toggle:hover {
+    transform: translateY(-2px);
+    background-color: var(--accent-color);
+    color: #fff;
+    box-shadow: var(--shadow-medium);
+    border-color: var(--accent-color); /* igual que .btn:hover */
+}
+
+.menu-btn::after {
+    content: "▼";
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.menu-btn.active::after {
+    transform: rotate(180deg);
+}
+
+.menu-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    background-color: var(--secondary-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--shadow-medium);
+    min-width: 260px; /* más ancho para evitar saltos */
+    width: max-content; /* ajusta al contenido sin forzar wrap */
+    max-width: 90vw; /* evita salir de la pantalla en móviles */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1001;
+}
+
+/* Estado visible del menú */
+.menu-dropdown.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.menu-dropdown a {
+    display: block;
+    padding: 12px 15px;
+    color: var(--text-color-dark);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    white-space: nowrap; /* cada opción en una sola línea */
+}
+
+.menu-dropdown a:last-child {
+    border-bottom: none;
+}
+
+.menu-dropdown a:hover {
+    background-color: var(--accent-color-light);
+    color: #ffffff;
+    transform: translateX(5px); /* desplazamiento sin cambiar el ancho */
+    will-change: transform;
+}
+
+/* ==== BOTONES BASE (compactados) ==== */
+.btn,
+.volver-btn,
+.volver-btn-fijo,
+.autor-btn {
+    display: inline-block;
+    background-color: var(--secondary-bg);
+    color: var(--text-color-dark);
+    padding: 10px 16px;
+    border-radius: var(--border-radius-small);
+    text-decoration: none;
+    font-weight: var(--heading-font-weight);
+    box-shadow: var(--shadow-light);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.btn:hover,
+.volver-btn:hover,
+.volver-btn-fijo:hover,
+.autor-btn:hover {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+    border-color: var(--accent-color);
+}
+
+/* ==== BOTONES FIJOS (solo posición) ==== */
+.volver-btn { margin-top: 20px; position: relative; }
+
+.volver-btn-fijo {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.autor-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
 body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f8f8f8;
+    font-family: var(--font-family-primary);
+    font-size: var(--base-font-size);
+    line-height: var(--line-height-base);
+    color: var(--text-color-dark);
+    background: var(--primary-bg);
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
+    position: relative;
+    transition: background-color .3s ease, color .3s ease, border-color .3s ease;
 }
+
 
 /* ==== HEADER & NAV ==== */
-:root {
-    /* Variables comunes para que todo sea simétrico */
-    --card-bg: #fff;
-    --card-border: 1px solid #ddd;
-    --card-radius: 8px;
-    --card-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    --card-padding: 20px;
-    /* Título común (igual que el actual de index) */
-    --title-size: clamp(1.8rem, 4vw, 3rem);
-}
+
+/* Suaviza el scroll en navegación */
+html { scroll-behavior: smooth; }
 header {
     text-align: center;
-    margin-bottom: 30px;
-    padding: var(--card-padding);
-    background-color: var(--card-bg);
-    border-radius: var(--card-radius);
-    box-shadow: var(--card-shadow);
+    margin-bottom: calc(2 * var(--spacing-unit));
+    padding: calc(0.9 * var(--spacing-unit));
+    background: transparent;
+    color: #ffffff;
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--shadow-medium);
+    position: relative;
+    overflow: hidden;
+    min-height: clamp(140px, 22vh, 220px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
+/* Fondo temático con banner y velo para legibilidad */
+header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(0,0,0,0.48), rgba(0,0,0,0.26)),
+        url('../imagenes/banner.jpg') center/cover no-repeat;
+    filter: grayscale(18%) contrast(1.04) brightness(0.92);
+    z-index: 0;
+    background-position: center, center 50%;
+}
+
+/* Estilos para el título del header con sombra para legibilidad */
 header h1 {
-    font-size: var(--title-size);
-    /* margin normalizado para evitar diferencias de separación en blogs */
-    margin: 0 0 10px 0;
-    color: #333;
+    font-family: var(--font-family-secondary);
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    margin: 0 0 var(--spacing-unit) 0;
+    color: #ffffff;
+    font-weight: var(--heading-font-weight);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.35);
+    letter-spacing: 0.5px;
+    font-variant: small-caps;
+    z-index: 2;
+    position: relative;
 }
 
+/* Refinamiento de navegación */
+nav ul li a {
+    text-decoration: none;
+    color: var(--secondary-bg);
+    background-color: transparent;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    padding: 8px 12px;
+    border-radius: var(--border-radius-small);
+    position: relative;
+    /* subrayado animado */
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 2px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: color .3s ease, background-size .3s ease, transform .2s ease;
+}
+
+nav ul li a:hover {
+    color: #fff;
+    background-size: 100% 2px;
+    transform: translateY(-1px);
+}
+
+/* Ajuste del contenedor de navegación para contraste sobre header */
+nav {
+    margin-bottom: calc(2 * var(--spacing-unit));
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: var(--border-radius-medium);
+    box-shadow: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: var(--spacing-unit);
+    backdrop-filter: blur(2px);
+}
+
+/* Lema */
 .lema {
     font-style: italic;
-    color: #666;
-    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: var(--spacing-unit);
+    font-size: 1.1rem;
+    z-index: 2;
+    position: relative;
 }
 
-nav {
-    margin-bottom: 30px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+/* Navegación dentro del header */
+header nav {
+    margin-top: var(--spacing-unit);
+    text-align: center;
+    z-index: 2;
+    position: relative;
 }
+
 
 nav ul {
     display: flex;
     list-style: none;
-    padding: 15px;
     justify-content: center;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
 }
 
 nav ul li {
-    margin: 0 15px;
+    margin: 0 calc(0.8 * var(--spacing-unit));
 }
 
-nav ul li a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    transition: color 0.3s;
-}
 
-nav ul li a:hover {
-    color: #0066cc;
-}
 
 /* ==== MAIN & ARTÍCULOS ==== */
 main {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: var(--secondary-bg);
+    position: relative;
+}
+
+/* Eliminamos la decoración sutil del main para un look más limpio */
+main::before {
+    content: none;
 }
 
 .articulo-completo {
-    margin-bottom: 30px;
+    margin-bottom: calc(2 * var(--spacing-unit));
 }
 
 .articulo-completo h2 {
-    color: #333;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #eee;
+    font-family: var(--font-family-secondary);
+    color: var(--text-color-dark);
+    margin-bottom: calc(0.6 * var(--spacing-unit));
+    padding-bottom: calc(0.4 * var(--spacing-unit));
+    border-bottom: none; /* Separador ornamental en blog.css */
+    font-weight: var(--heading-font-weight);
+    font-size: clamp(2.1rem, 4.8vw, 3.6rem);
 }
 
 .contenido-articulo {
-    margin-bottom: 20px;
+    margin-bottom: calc(1.5 * var(--spacing-unit));
 }
 
 .contenido-articulo p {
-    margin-bottom: 15px;
+    margin-bottom: var(--spacing-unit);
+    color: var(--text-color-light);
+    line-height: var(--line-height-base);
 }
 
 .contenido-articulo h3 {
-    margin: 25px 0 15px;
-    color: #444;
+    font-family: var(--font-family-secondary);
+    margin: calc(1.5 * var(--spacing-unit)) 0 calc(0.8 * var(--spacing-unit));
+    color: var(--text-color-dark);
+    font-weight: var(--heading-font-weight);
+    border-left: 4px solid var(--accent-color);
+    padding-left: calc(0.8 * var(--spacing-unit));
+    font-size: 1.4rem;
 }
 
 .imagen-articulo {
-    margin: 20px 0;
+    margin: calc(1.5 * var(--spacing-unit)) 0;
     text-align: center;
 }
 
 .imagen-articulo img {
     max-width: 100%;
     height: auto;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-medium);
     padding: 5px;
+    box-shadow: var(--shadow-light);
+    transition: transform 0.3s ease;
+}
+
+.imagen-articulo img:hover {
+    transform: scale(1.02);
 }
 
 /* ==== COMPONENTES ==== */
 .destacado {
-    background-color: #f9f9f9;
-    padding: 20px;
-    margin-bottom: 30px;
-    border-radius: 5px;
-    border-left: 5px solid #0066cc;
+    background-color: rgba(90, 141, 127, 0.05); /* Usar el color de acento con baja opacidad */
+    padding: calc(1.5 * var(--spacing-unit));
+    margin-bottom: calc(2 * var(--spacing-unit));
+    border-radius: var(--border-radius-medium);
+    border-left: 5px solid var(--accent-color);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-light);
 }
 
 .destacado h2 {
-    color: #0066cc;
-    margin-bottom: 15px;
+    font-family: var(--font-family-secondary);
+    color: var(--accent-color);
+    margin-bottom: var(--spacing-unit);
+    font-weight: var(--heading-font-weight);
+    font-size: 1.6rem;
 }
 
 .gris {
-    color: gray;
+    color: var(--text-color-light);
 }
 
 /* ==== FOOTER ==== */
 footer {
     text-align: center;
-    margin-top: 30px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    color: #666;
+    margin-top: calc(2 * var(--spacing-unit));
+    padding: calc(1.5 * var(--spacing-unit));
+    background-color: var(--secondary-bg);
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--shadow-light);
+    border: 1px solid var(--border-color);
+    color: var(--text-color-light);
+    position: relative;
+    font-size: 0.9rem;
+}
+
+/* Eliminamos la decoración sutil del footer */
+footer::before {
+    content: none;
 }
 
 /* ==== VISOR DE IMÁGENES (movido desde blog.css) ==== */
@@ -163,42 +434,62 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.9);
+    background-color: rgba(0,0,0,0.85); /* Fondo más oscuro para mejor contraste */
     z-index: 2000;
     justify-content: center;
     align-items: center;
+    backdrop-filter: blur(5px); /* Efecto de desenfoque */
 }
 
 #imagen-ampliada {
     max-width: 90%;
     max-height: 90%;
     object-fit: contain;
-    transition: transform 0.25s ease;
+    transition: transform 0.3s ease; /* Transición más suave */
     cursor: zoom-in;
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--shadow-medium);
 }
 
-#imagen-ampliada.zoom-1 { transform: scale(1.5); cursor: zoom-in; }
-#imagen-ampliada.zoom-2 { transform: scale(2.5); cursor: zoom-out; }
-#imagen-ampliada.zoom-activado { transform: scale(1.5); cursor: zoom-out; }
+#imagen-ampliada.zoom-1 { transform: scale(1.2); cursor: zoom-in; } /* Zoom más moderado */
+#imagen-ampliada.zoom-2 { transform: scale(1.8); cursor: zoom-out; }
+#imagen-ampliada.zoom-activado { transform: scale(1.2); cursor: zoom-out; }
 
 .cerrar-visor {
     position: absolute;
     top: 20px;
     right: 20px;
-    color: white;
-    font-size: 24px;
+    color: #ffffff;
+    font-size: 28px; /* Icono más grande */
     cursor: pointer;
     z-index: 2001;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
 }
 
 .cerrar-visor:hover {
-    color: #ccc;
+    color: var(--accent-color-light);
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 /* ==== RESPONSIVE ==== */
 @media (max-width: 768px) {
-    /* Eliminamos el override de font-size para h1 aquí.
-       Se mantiene el tamaño común de --title-size también en móviles. */
+    body {
+        padding: calc(0.5 * var(--spacing-unit));
+    }
+    header {
+        min-height: 150px;
+        padding: var(--spacing-unit);
+    }
+    header h1 {
+        font-size: clamp(1.5rem, 8vw, 2.5rem);
+    }
     nav ul {
         flex-direction: column;
         align-items: center;
@@ -206,15 +497,112 @@ footer {
     nav ul li {
         margin: 5px 0;
     }
+    .menu-container {
+        top: 10px;
+        left: 10px;
+    }
+    .volver-btn-fijo {
+        top: 10px;
+        right: 10px;
+    }
+}
+
+/* ==== GRID DE BLOGS (para index) ==== */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Más flexible */
+    gap: calc(1.5 * var(--spacing-unit));
+    margin-top: calc(2 * var(--spacing-unit));
+    padding: calc(1.5 * var(--spacing-unit));
+    border-radius: var(--border-radius-medium);
+    background-color: var(--secondary-bg);
+    box-shadow: var(--shadow-light);
+    border: 1px solid var(--border-color);
+}
+
+/* Tarjeta de blog con acento lateral */
+.blog-item {
+    position: relative;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-medium);
+    background-color: var(--secondary-bg);
+    box-shadow: var(--shadow-light);
+    padding: var(--spacing-unit);
+    display: flex;
+    align-items: center;
+    min-height: 100px;
+    text-decoration: none !important;
+    color: var(--text-color-dark) !important;
+    transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    border-left: 5px solid var(--accent-color-light); /* Acento sutil */
+    /* Aparición sutil */
+    opacity: 0;
+    transform: translateY(8px);
+    animation: fadeInUp .6s ease forwards;
+}
+
+/* Eliminamos los estilos específicos para nth-child para uniformidad */
+.blog-item:nth-child(odd),
+.blog-item:nth-child(even) {
+    border-left: 5px solid var(--accent-color-light);
+}
+
+.blog-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+    border-left-color: var(--accent-color);
+}
+
+/* Imagen y textos del blog */
+.blog-image {
+    width: 80px; /* Tamaño fijo para imágenes */
+    height: 80px;
+    object-fit: cover;
+    border-radius: var(--border-radius-small);
+    margin-right: var(--spacing-unit);
+    flex-shrink: 0;
+    box-shadow: var(--shadow-light);
+}
+
+.blog-title {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-right: calc(0.5 * var(--spacing-unit));
+    text-align: left;
+}
+
+.blog-title h2 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--text-color-dark);
+    font-weight: var(--heading-font-weight);
+}
+
+/* Responsive para grid de blogs */
+@media (max-width: 900px) {
+    .blog-grid {
+        grid-template-columns: 1fr;
+        padding: var(--spacing-unit);
+    }
+    .blog-item {
+        min-height: 120px;
+        padding: var(--spacing-unit);
+    }
+    .blog-image {
+        width: 60px;
+        height: 60px;
+    }
 }
 
 /* Utilidad por si deseas reutilizar el recuadro en otros contenedores */
 .card {
-    background-color: var(--card-bg);
-    border: var(--card-border);
-    border-radius: var(--card-radius);
-    box-shadow: var(--card-shadow);
-    padding: var(--card-padding);
+    background-color: var(--secondary-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--shadow-light);
+    padding: var(--spacing-unit);
 }
 
 /* Leyenda para imágenes (figure/figcaption) */
@@ -222,7 +610,7 @@ footer {
     display: inline-flex;
     flex-direction: column;
     align-items: center;
-    margin: 20px 0;
+    margin: calc(1.5 * var(--spacing-unit)) 0;
 }
 
 .fig-leyenda img {
@@ -233,12 +621,142 @@ footer {
 /* Tamaño más pequeño para pies de foto en figuras con leyenda */
 .fig-leyenda figcaption,
 .fig-leyenda .img-leyenda {
-    font-size: 0.7rem;
-    color: #666;
-    margin-top: 6px;
+    font-size: 0.8rem;
+    color: var(--text-color-light);
+    margin-top: calc(0.4 * var(--spacing-unit));
     line-height: 1.4;
     text-align: center;
     max-width: 100%;
     word-wrap: break-word;
     overflow-wrap: anywhere;
+}
+
+/* Selección de texto con acento de tema */
+::selection {
+    background-color: var(--accent-color-light);
+    color: #fff;
+}
+
+/* Forzar primera letra normal (sin capitular) en el primer párrafo de los artículos */
+.contenido-articulo p:first-of-type::first-letter { float: none; padding: 0; font-size: inherit; line-height: inherit; color: inherit; }
+
+/* Tema claro/oscuro controlado por data-theme en :root */
+:root[data-theme="light"] {
+  --primary-bg: #f6f3ee;
+  --secondary-bg: #ffffff;
+  --text-color-dark: #2b2b2b;
+  --text-color-light: #4a4a4a;
+  --accent-color: #6b2f2f;
+  --accent-color-light: #a76a6a;
+  --border-color: #e6dfd3;
+}
+
+:root[data-theme="dark"] {
+  --primary-bg: #1d1b1a;
+  --secondary-bg: #242120;
+  --text-color-dark: #ece8e4;
+  --text-color-light: #cfc8c2;
+  --accent-color: #c89a9a;
+  --accent-color-light: #e0bcbc;
+  --border-color: #3b3735;
+}
+
+/* Animaciones clave */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ==== COMPONENTES ==== */
+.destacado {
+    background-color: rgba(90, 141, 127, 0.05); /* Usar el color de acento con baja opacidad */
+    padding: calc(1.5 * var(--spacing-unit));
+    margin-bottom: calc(2 * var(--spacing-unit));
+    border-radius: var(--border-radius-medium);
+    border-left: 5px solid var(--accent-color);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-light);
+}
+
+.destacado h2 {
+    font-family: var(--font-family-secondary);
+    color: var(--accent-color);
+    margin-bottom: var(--spacing-unit);
+    font-weight: var(--heading-font-weight);
+    font-size: 1.6rem;
+}
+
+.gris {
+    color: var(--text-color-light);
+}
+
+/* ==== FOOTER ==== */
+footer {
+    text-align: center;
+    margin-top: calc(2 * var(--spacing-unit));
+    padding: calc(1.5 * var(--spacing-unit));
+    background-color: var(--secondary-bg);
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--shadow-light);
+    border: 1px solid var(--border-color);
+    color: var(--text-color-dark);
+    position: relative;
+    font-size: 0.95rem;
+}
+footer p { margin: 0.4rem 0 0; }
+footer::before,
+footer::after {
+    content: "";
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    height: 4px;
+    background-size: 100% 4px;
+    color: var(--border-color);
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 4' preserveAspectRatio='none'><line x1='0' y1='2' x2='100' y2='2' stroke='currentColor' stroke-width='1' stroke-linecap='round'/><circle cx='50' cy='2' r='1' fill='currentColor' /></svg>");
+    opacity: .85;
+}
+footer::before { top: 8px; }
+footer::after  { bottom: 8px; }
+
+/* ==== FOOTER CANÓNICO (decorado) ==== */
+footer {
+  text-align: center;
+  margin-top: calc(2 * var(--spacing-unit));
+  padding: calc(1.5 * var(--spacing-unit)) calc(1 * var(--spacing-unit));
+  background: linear-gradient(180deg, var(--secondary-bg) 0%, #ffffff 100%);
+  border-radius: var(--border-radius-medium);
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--border-color);
+  color: var(--text-color-dark);
+  position: relative;
+  font-size: 0.95rem;
+}
+footer p {
+  margin: 0.5rem auto 0;
+  max-width: 900px;
+}
+footer::before,
+footer::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  height: 4px;
+  background-size: 100% 4px;
+  color: var(--accent-color);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 4' preserveAspectRatio='none'><line x1='0' y1='2' x2='100' y2='2' stroke='currentColor' stroke-width='1' stroke-linecap='round'/><circle cx='50' cy='2' r='1' fill='currentColor' /></svg>");
+  opacity: .9;
+}
+footer::before { top: 10px; }
+footer::after  { bottom: 10px; }
+
+:root[data-theme="dark"] .blog-grid {
+    background-color: var(--secondary-bg);
+    border-color: #6a625e; /* borde un poco más claro para separar del fondo */
+}
+:root[data-theme="dark"] .blog-item {
+    background-color: #2b2725; /* ligeramente más claro que el fondo para destacar */
+    border-color: #6a625e; /* borde más claro para definir tarjeta */
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.06);
 }

@@ -1,143 +1,67 @@
-/* ==== BOTONES FIJOS ==== */
-.volver-btn, 
-.volver-btn-fijo,
-.autor-btn {
-    display: inline-block;
-    background-color: #f5f5f5;
-    padding: 8px 15px;
-    border-radius: 5px;
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
+/* Estilos específicos y compactos para páginas de blog */
 
-.volver-btn {
-    margin-top: 20px;
-    position: relative;
-}
-
-.volver-btn-fijo {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 1000;
-}
-
-.autor-btn {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
-}
-
-.volver-btn:hover,
-.volver-btn-fijo:hover,
-.autor-btn:hover {
-    background-color: #e0e0e0;
-}
-
-/* ==== BLOG: IMÁGENES Y LAYOUT ==== */
 .blog-imagen-principal {
-    display: block;
-    max-width: 420px;
-    max-height: 320px;
-    width: 100%;
-    height: auto;
-    margin: 20px auto;
-    object-fit: contain;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    background: transparent;
-}
-
-.blog-contenedor-derecha .contenido-articulo {
-    flex: 1;
-    padding-right: 40px;
-    text-align: left;
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 24px auto;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: var(--shadow-medium);
 }
 
 .blog-imagen-derecha {
-    width: 300px;
-    height: 200px;
-    object-fit: contain;
-    flex-shrink: 0;
-    border: none;
-    padding: 0;
-    box-shadow: none;
-    background: transparent;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: var(--shadow-light);
 }
 
-
-
-/* ==== Utilidades: imagen a la derecha y bloques con auto-clear ==== */
-.bloque {
-    overflow: auto;
-    margin-bottom: 1rem;
-}
-
-.fig-derecha {
-    float: right;
-    margin: 0 0 1rem 1rem;
-    max-width: 300px;
-}
-
-.fig-derecha img {
-    display: block;
-}
-
-@media (max-width: 768px) {
-    .fig-derecha {
-        float: none;
-        margin: 0 auto 1rem auto;
-        display: table;
-    }
-}
-
-/* Para blogs con imagen centrada o sin imagen a la derecha */
-
-
-.blog-contenedor-derecha {
-    display: flex;
-    align-items: center;
-    background: var(--card-bg);
-
-    border-radius: var(--card-radius);
-
-    padding: var(--card-padding);
-    margin-bottom: 30px;
-    width: fit-content;
-    max-width: 100%;
-}
+.fig-derecha { float: right; margin: 0 0 1.2rem 1.2rem; max-width: 300px; }
+.fig-derecha img { display: block; border-radius: 8px; }
+@media (max-width: 768px) { .fig-derecha { float: none; margin: 1.2rem auto; display: block; } }
 
 .blog-contenedor-normal {
-    display: flex;              /* Para igualar el comportamiento de flex */
-    align-items: flex-start;     /* Alineación vertical como blog-derecha */
-    background: var(--card-bg);
-    border-radius: var(--card-radius);
-    padding: var(--card-padding);
-    margin-bottom: 30px;
-    width: fit-content;         /* Que el ancho se ajuste al contenido + padding */
-    max-width: 100%;
-    box-sizing: border-box;      /* Evita que padding agrande el ancho total */
+  display: flex;
+  align-items: flex-start;
+  background: var(--secondary-bg);
+  border-radius: 10px;
+  padding: 24px;
+  margin-bottom: 24px;
+  width: fit-content;
+  max-width: 100%;
+  box-sizing: border-box;
+  box-shadow: var(--shadow-medium);
 }
 
-/* Contenido interno igual que blog-derecha */
-.blog-contenedor-normal .contenido-articulo {
-    flex: 1;                     /* Hace que el texto ocupe todo el espacio posible */
-    text-align: left;
-}
+.blog-contenedor-normal .contenido-articulo { flex: 1; text-align: left; }
 
 .articulo-completo {
-    margin-bottom: 30px;
-    width: fit-content;
-    max-width: 100%;
-    margin-left: auto;
+  border-radius: 10px;
+  margin: 0 auto 24px;
+  background: var(--secondary-bg);
+  box-shadow: var(--shadow-medium);
+  padding: 24px;
+  box-sizing: border-box;
+  max-width: 100%;
+  width: fit-content;
 }
 
-ul{
-    margin-left: 2em; 
-    padding-left: 1em; 
-    margin-bottom: 1em; 
+ul { margin: 0 0 1em 2em; padding-left: 1em; list-style: disc; color: var(--text-color-dark); }
+
+.blog-contenedor-normal p, .articulo-completo p { margin-bottom: 1em; }
+
+/* Separador decorativo bajo el título del blog */
+.articulo-completo h2::after,
+.blog-contenedor-normal .contenido-articulo > h2:first-child::after {
+  content: "";
+  display: block;
+  height: 6px;
+  margin-top: 0.5rem;
+  background-size: 100% 6px;
+  color: var(--accent-color);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 6' preserveAspectRatio='none'><line x1='0' y1='3' x2='100' y2='3' stroke='currentColor' stroke-width='1' stroke-linecap='round'/><circle cx='50' cy='3' r='1.5' fill='currentColor' /></svg>");
+  opacity: .8;
 }
