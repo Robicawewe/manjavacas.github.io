@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cuadros del Autor - EL LUGAR DE LA MANCHA: MOTA DEL CUERVO</title>
+  <link rel="icon" href="imagenes/Icono.jpg" type="image/x-icon">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/galeria.css">
+</head>
+<body>
+  <header>
+    <h1>Cuadros del Autor</h1>
+  </header>
+
+  <div class="header-note">Cuadros de Jose Luis Manjavacas Morales, el primer Cervantista en descubrir "El Lugar de la Mancha"</div>
+  <hr class="filete">
+
+  <!-- El menú se inyecta desde partials/menu.html por js/menu-desplegable.js -->
+
+  <main>
+    <section class="galeria">
+      <!-- Item 1 -->
+      <article class="cuadro">
+        <div class="cuadro-imagen">
+          <img src="imagenes/Blog 1 - Molino.jpg" alt="Molino en La Mancha" onclick="abrirImagen(this); return false;">
+        </div>
+        <div class="pie-foto">
+          <h3>titulo 1</h3>
+          <p>descripcion 1</p>
+        </div>
+      </article>
+
+      <!-- Item 2 -->
+      <article class="cuadro">
+        <div class="cuadro-imagen">
+          <img src="imagenes/Blog 12.jpg" alt="Paisaje manchego" onclick="abrirImagen(this); return false;">
+        </div>
+        <div class="pie-foto">
+          <h3>titulo 2</h3>
+          <p>descripcion 2</p>
+        </div>
+      </article>
+
+      <!-- Item 3 -->
+      <article class="cuadro">
+        <div class="cuadro-imagen">
+          <img src="imagenes/Blog 7.jpg" alt="Figura cervantina" onclick="abrirImagen(this); return false;">
+        </div>
+        <div class="pie-foto">
+          <h3>titulo 3</h3>
+          <p>descripcion 3</p>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 EL LUGAR DE LA MANCHA: MOTA DEL CUERVO. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- Visor de imágenes (igual que en index) -->
+  <div id="visor-imagen" class="visor-oculto" onclick="cerrarImagen()">
+    <span class="cerrar-visor" onclick="cerrarImagen(event)">←</span>
+    <img id="imagen-ampliada" src="" alt="Imagen ampliada">
+  </div>
+  <script src="js/visor-imagenes.js"></script>
+  <script src="js/menu-desplegable.js"></script>
+</body>
+</html>

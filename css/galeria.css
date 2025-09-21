@@ -1,4 +1,9 @@
 
+/* Overrides específicos para galería: eliminar fondo de contenedor de main */
+main {
+    background: transparent !important;
+}
+
 .galeria {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -7,7 +12,7 @@
 }
 
 .cuadro {
-    background: var(--secondary-bg);
+    background: transparent; /* Dejar ver el fondo de la página detrás de cada tarjeta */
     border-radius: var(--border-radius-medium);
     overflow: hidden;
     box-shadow: var(--shadow-light);
@@ -43,7 +48,7 @@
 .pie-foto {
     padding: 1rem;
     text-align: center;
-    background: var(--secondary-bg);
+    background: transparent; /* Fondo de la página también en el pie de foto */
 }
 
 .pie-foto h3 {

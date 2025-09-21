@@ -103,25 +103,83 @@ if (menuBtn && menuDropdown) {
   }
 })();
 
-// ================== PARALLAX SUAVE HEADER ==================
-// (Desactivado por petición: la imagen del header no debe moverse al hacer scroll)
-/*
-(function headerParallax() {
-  const header = document.querySelector('header');
-  if (!header) return;
-  let lastY = 0;
-  function onScroll() {
-    const y = window.scrollY || window.pageYOffset;
-    if (Math.abs(y - lastY) < 1) return; // evitar trabajo extra
-    lastY = y;
-    // Desplazamiento muy sutil (0.2) limitado
-    const pos = Math.max(0, Math.min(100, 50 + y * 0.2));
-    document.documentElement.style.setProperty('--header-bg-pos', pos + '%');
+// ================== CONTROL DE TAMAÑO DE TEXTO (A- / A+) ==================
+(function fontSizeSetup() {
+  const root = document.documentElement;
+  const STORAGE_KEY = 'prefer-font-size'; // guarda un número en px
+  const MIN = 14; // mínimo recomendado para legibilidad sin romper diseño
+  const MAX = 20; // máximo para evitar romper maquetación
+  const STEP = 1;
+
+  // Lee el tamaño guardado o detecta el actual del html
+  function readSavedPx() {
+    const saved = parseInt(localStorage.getItem(STORAGE_KEY), 10);
+    if (!isNaN(saved)) return clamp(saved);
+    // Si no hay guardado, usamos el font-size calculado del html
+    const computed = parseInt(getComputedStyle(root).fontSize, 10);
+    return clamp(isNaN(computed) ? 16 : computed);
   }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+
+  function clamp(px) { return Math.max(MIN, Math.min(MAX, px)); }
+
+  function apply(px) {
+    const val = clamp(px);
+    // Ajustar tamaño base del documento (afecta a rem)
+    root.style.fontSize = val + 'px';
+    // Actualizar también la variable para los casos que dependan de ella
+    root.style.setProperty('--base-font-size', val + 'px');
+    localStorage.setItem(STORAGE_KEY, String(val));
+    updateLabel(val);
+  }
+
+  function updateLabel(px) {
+    const label = document.querySelector('.font-size-controls .label');
+    if (label) label.textContent = 'Tamaño texto: ' + px + 'px';
+  }
+
+  // Crear controles si no existen
+  function ensureControls(container) {
+    if (!container) return null;
+    let box = container.querySelector('.font-size-controls');
+    if (!box) {
+      box = document.createElement('div');
+      box.className = 'font-size-controls';
+      const current = readSavedPx();
+      box.innerHTML =
+        '<span class="label">Tamaño texto: ' + current + 'px</span>'+
+        '<div class="font-size-buttons">\
+          <button type="button" class="font-btn font-decrease" aria-label="Reducir tamaño de texto" title="Texto más pequeño">A−</button>\
+          <button type="button" class="font-btn font-increase" aria-label="Aumentar tamaño de texto" title="Texto más grande">A+</button>\
+        </div>';
+      container.appendChild(box);
+    }
+    // Re-vincular para evitar duplicados
+    const decBtnOld = box.querySelector('.font-decrease');
+    const incBtnOld = box.querySelector('.font-increase');
+    if (decBtnOld) {
+      const decBtn = decBtnOld.cloneNode(true);
+      decBtnOld.replaceWith(decBtn);
+      decBtn.addEventListener('click', () => apply(readSavedPx() - STEP));
+    }
+    if (incBtnOld) {
+      const incBtn = incBtnOld.cloneNode(true);
+      incBtnOld.replaceWith(incBtn);
+      incBtn.addEventListener('click', () => apply(readSavedPx() + STEP));
+    }
+    return box;
+  }
+
+  // Aplicar tamaño inicial
+  apply(readSavedPx());
+
+  // Si ya existe el menú en la página, añadir controles ahora
+  const immediateMenu = document.querySelector('.menu-dropdown');
+  if (immediateMenu) ensureControls(immediateMenu);
+
+  // Exponer para reutilizar tras inyección del menú compartido
+  window.__ensureFontSizeControls = ensureControls;
+  window.__applyFontSize = apply;
 })();
-*/
 
 // ================== REVELADO POR SCROLL ==================
 (function scrollReveal() {
@@ -227,6 +285,11 @@ if (menuBtn && menuDropdown) {
         localStorage.setItem(STORAGE_KEY, next);
         updateToggleIconAndLabel();
       });
+    }
+
+    // Asegurar controles de tamaño de texto tras la inyección
+    if (window.__ensureFontSizeControls) {
+      window.__ensureFontSizeControls(menuDropdown);
     }
   }
 

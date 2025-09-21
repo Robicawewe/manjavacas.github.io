@@ -44,6 +44,8 @@ html {
     display: flex;
     align-items: center;
     gap: 8px;
+    /* Bloquear tamaño del menú para que no varíe con el ajuste global de texto */
+    font-size: 16px;
 }
 
 .menu-btn {
@@ -90,6 +92,35 @@ html {
     border-color: var(--accent-color); /* igual que .btn:hover */
 }
 
+/* Controles de tamaño de texto */
+.font-size-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px 15px;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+.font-size-controls .label {
+    font-size: 14px;
+    color: var(--text-color-dark);
+}
+.font-size-buttons { display: flex; gap: 8px; }
+.font-btn {
+    background-color: var(--secondary-bg);
+    padding: 8px 10px;
+    border-radius: var(--border-radius-small);
+    color: var(--text-color-dark);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-light);
+    cursor: pointer;
+    transition: background-color .3s ease, color .3s ease, transform .2s ease, box-shadow .3s ease, border-color .3s ease;
+    line-height: 1;
+    font-weight: 600;
+}
+.font-btn:hover { transform: translateY(-2px); background-color: var(--accent-color); color: #fff; border-color: var(--accent-color); box-shadow: var(--shadow-medium); }
+
 .menu-btn::after {
     content: "▼";
     font-size: 0.8rem;
@@ -105,6 +136,8 @@ html {
     top: calc(100% + 10px);
     left: 0;
     background-color: var(--secondary-bg);
+    /* Bloquear tamaño del menú para que no varíe con el ajuste global de texto */
+    font-size: 16px;
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius-medium);
     box-shadow: var(--shadow-medium);
@@ -242,7 +275,7 @@ header::before {
 /* Estilos para el título del header con sombra para legibilidad */
 header h1 {
     font-family: var(--font-family-secondary);
-    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-size: clamp(32px, 5vw, 51px);
     margin: 0 0 var(--spacing-unit) 0;
     color: #ffffff;
     font-weight: var(--heading-font-weight);
@@ -251,6 +284,20 @@ header h1 {
     font-variant: small-caps;
     z-index: 2;
     position: relative;
+    line-height: 1.1;
+}
+
+/* Título en dos líneas centrado */
+header h1 .title-line {
+    display: block;
+    text-align: center;
+}
+header h1 .title-line:first-child {
+    font-size: clamp(29px, 4.6vw, 48px);
+}
+header h1 .title-line:last-child {
+    font-size: clamp(32px, 5.2vw, 54px);
+    letter-spacing: 1px;
 }
 
 /* Refinamiento de navegación */
@@ -292,8 +339,8 @@ nav {
 .lema {
     font-style: italic;
     color: rgba(255, 255, 255, 0.9);
-    margin-bottom: var(--spacing-unit);
-    font-size: 1.1rem;
+    margin-bottom: 16px;
+    font-size: 17px;
     z-index: 2;
     position: relative;
 }
@@ -701,9 +748,9 @@ footer {
     border: 1px solid var(--border-color);
     color: var(--text-color-dark);
     position: relative;
-    font-size: 0.95rem;
+    font-size: 15px;
 }
-footer p { margin: 0.4rem 0 0; }
+footer p { margin: 8px 0 0; }
 footer::before,
 footer::after {
     content: "";
@@ -730,10 +777,10 @@ footer {
   border: 1px solid var(--border-color);
   color: var(--text-color-dark);
   position: relative;
-  font-size: 0.95rem;
+  font-size: 15px;
 }
 footer p {
-  margin: 0.5rem auto 0;
+  margin: 8px auto 0;
   max-width: 900px;
 }
 footer::before,
@@ -760,3 +807,127 @@ footer::after  { bottom: 10px; }
     border-color: #6a625e; /* borde más claro para definir tarjeta */
     box-shadow: 0 2px 14px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
+
+/* Asegura que los controles de tamaño dentro del menú mantengan tamaño fijo y no dependan del root */
+.menu-dropdown .font-size-controls {
+    font-size: 16px;
+}
+
+/* Ajustes de footer para tema oscuro: reducir blancura y mejorar integración */
+:root[data-theme="dark"] footer {
+    /* Sustituye el degradado claro por uno oscuro y sutil */
+    background: linear-gradient(180deg, #242120 0%, #1b1918 100%);
+    border-color: #4a4441; /* un poco más claro que el borde base para definir el contorno */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.04);
+    color: var(--text-color-dark); /* en oscuro es un tono claro ya definido */
+}
+:root[data-theme="dark"] footer::before,
+:root[data-theme="dark"] footer::after {
+    color: var(--separator-color); /* líneas blancas en tema oscuro */
+    opacity: 0.7;   /* visibles sin deslumbrar */
+}
+
+/* ==== DECORACIÓN COMÚN (nota de cabecera y filete) ==== */
+.header-note {
+  text-align: center;
+  color: var(--text-color-light);
+  margin: 8px auto 0;
+  padding: 0 12px;
+}
+
+/* Filete decorativo (igual estilo que separadores del blog/footer) */
+hr.filete {
+  border: 0;
+  height: 6px;
+  margin: 12px auto 24px;
+  max-width: 980px;
+  background-size: 100% 6px;
+  color: var(--separator-color);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 6' preserveAspectRatio='none'><line x1='0' y1='3' x2='100' y2='3' stroke='currentColor' stroke-width='1' stroke-linecap='round'/><circle cx='50' cy='3' r='1.5' fill='currentColor' /></svg>");
+  opacity: .85;
+}
+
+/* Asegurar estilo base de hr si se usa sin clase */
+hr { border: none; border-top: 1px solid var(--border-color); margin: 16px 0; }
+
+/* Mejora de contraste y hover en tarjetas de blog en tema oscuro */
+:root[data-theme="dark"] .blog-item {
+  background-color: #2b2725; /* base ligeramente más clara para diferenciar del fondo */
+  border-color: #6a625e;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+:root[data-theme="dark"] .blog-item:hover {
+  transform: translateY(-6px);
+  background-color: #332f2d; /* eleva el fondo al pasar el ratón */
+  box-shadow: 0 10px 28px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.08);
+  border-left-color: var(--accent-color);
+}
+
+/* Accesibilidad: resalte al enfocar con teclado */
+.blog-item:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+
+/* ===== Separador: variable de color genérica ===== */
+:root { --separator-color: var(--accent-color); }
+:root[data-theme="dark"] { --separator-color: #ffffff; }
+
+
+/* ==== Correcciones: usar :root en lugar de ::root (append para anular errores previos) ==== */
+:root[data-theme="light"] {
+  --primary-bg: #f6f3ee;
+  --secondary-bg: #ffffff;
+  --text-color-dark: #2b2b2b;
+  --text-color-light: #4a4a4a;
+  --accent-color: #6b2f2f;
+  --accent-color-light: #a76a6a;
+  --border-color: #e6dfd3;
+}
+:root[data-theme="dark"] {
+  --primary-bg: #1d1b1a;
+  --secondary-bg: #242120;
+  --text-color-dark: #ece8e4;
+  --text-color-light: #cfc8c2;
+  --accent-color: #c89a9a;
+  --accent-color-light: #e0bcbc;
+  --border-color: #3b3735;
+}
+/* Variantes oscura para componentes (corrigiendo selectores) */
+:root[data-theme="dark"] .blog-grid {
+  background-color: var(--secondary-bg);
+  border-color: #6a625e;
+}
+:root[data-theme="dark"] .blog-item {
+  background-color: #2b2725;
+  border-color: #6a625e;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+:root[data-theme="dark"] .blog-item:hover {
+  transform: translateY(-6px);
+  background-color: #332f2d;
+  box-shadow: 0 10px 28px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.08);
+  border-left-color: var(--accent-color);
+}
+:root[data-theme="dark"] footer {
+  background: linear-gradient(180deg, #242120 0%, #1b1918 100%);
+  border-color: #4a4441;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  color: var(--text-color-dark);
+}
+:root[data-theme="dark"] footer::before,
+:root[data-theme="dark"] footer::after {
+  color: var(--separator-color);
+  opacity: 0.7;
+}
+/* Separadores: variable de color genérica corregida */
+:root { --separator-color: var(--accent-color); }
+:root[data-theme="dark"] { --separator-color: #ffffff; }
+
+
+/* ==== Fix específico: asegurar separadores blancos en tema oscuro (selector html[data-theme]) ==== */
+html[data-theme="dark"] { --separator-color: #ffffff; }
+html[data-theme="light"] { --separator-color: var(--accent-color); }
+html[data-theme="dark"] footer::before,
+html[data-theme="dark"] footer::after { color: #ffffff; opacity: 0.7; }
